@@ -13,9 +13,9 @@ EOF
 [ $(id -u) != "0" ] && { echo "Error: You must be root to run this script!"; exit 1; }
 
 do_init(){
-    dnf update -y
-    dnf install gzip zip tar -y
-    dnf install python3-pip -y
+    dnf update -y || apt update -y
+    dnf install gzip zip tar -y || apt install -y gzip zip tar
+    dnf install python3-pip -y || apt install -y python3-pip
     pip3 install b2
 }
 
